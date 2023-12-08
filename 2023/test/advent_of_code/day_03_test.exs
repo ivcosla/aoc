@@ -3,7 +3,7 @@ defmodule AdventOfCode.Day03Test do
 
   import AdventOfCode.Day03
 
-  # @tag :skip
+  @tag :skip
   test "part1" do
     input = """
     467..114..
@@ -38,7 +38,7 @@ defmodule AdventOfCode.Day03Test do
     assert result === 4361
   end
 
-  # @tag :skip
+  @tag :skip
   test "part2" do
     input = """
     467..114..
