@@ -32,9 +32,7 @@ defmodule AdventOfCode.Day09 do
     |> Enum.reduce(
       0,
       fn s, previous_last ->
-        current_last =
-          Enum.reverse(s)
-          |> Enum.at(0)
+        current_last = List.last(s)
 
         current_last + previous_last
       end
@@ -51,20 +49,10 @@ defmodule AdventOfCode.Day09 do
   end
 
   def single_diff_seq(seq) do
-    Enum.with_index(seq)
-    |> Enum.reduce(
-      [],
-      fn {e1, idx}, acc ->
-        cond do
-          idx == 0 ->
-            []
-
-          true ->
-            e2 = Enum.at(seq, idx - 1)
-            Enum.concat(acc, [e1 - e2])
-        end
-      end
-    )
+    Enum.chunk_every(seq, 2, 1, :discard)
+    |> Enum.map(fn [e1, e2] ->
+      e2 - e1
+    end)
   end
 
   def get_parts(text) do
